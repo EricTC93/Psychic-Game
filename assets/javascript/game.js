@@ -8,13 +8,14 @@
 	var maxGuess = 10;
 	var guessesLeft = maxGuess;
 		document.getElementById("guessesLeft").textContent = guessesLeft;
-	var gameOver = false;
+	// var gameOver = false;
 
 	// Generates random letter to guess
 	var rand = Math.floor((Math.random()*26));
 	var comLetter = alphabet.charAt(rand);
 	console.log(comLetter);
 
+	// Takes letter input from the user
 	document.onkeyup = function(event) {
 		var userLetter = event.key;
 
@@ -40,7 +41,7 @@
 			guessesLeft--;
 			document.getElementById("guessesLeft").textContent = guessesLeft;
 
-			// Ends game if user guesses right
+			// Ends round if user guesses right
 			if (userLetter === comLetter) {
 				winNum++;
 				document.getElementById("winNum").textContent = winNum;
@@ -56,11 +57,14 @@
 
 	}
 
+	// Resets key variables to start the game over
 	function resetGame() {
 		userGuess = "";
 		document.getElementById("userGuess").textContent = userGuess;
+
 		guessesLeft = maxGuess;
 		document.getElementById("guessesLeft").textContent = guessesLeft;
+
 		rand = Math.floor((Math.random()*26));
 		comLetter = alphabet.charAt(rand);
 		console.log(comLetter);
