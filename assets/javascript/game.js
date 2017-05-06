@@ -1,4 +1,4 @@
-
+	
 	// Declaring Variables
 	var alphabet = "qwertyuiopasdfghjklzxcvbnm";
 	var winNum = 0;
@@ -12,8 +12,8 @@
 
 	// Generates random letter to guess
 	var rand = Math.floor((Math.random()*26));
-	var letter = alphabet.charAt(rand);
-	console.log(letter);
+	var comLetter = alphabet.charAt(rand);
+	console.log(comLetter);
 
 	document.onkeyup = function(event) {
 		var userLetter = event.key;
@@ -27,7 +27,7 @@
 		if (guessesLeft > 0) {
 
 			console.log(userLetter);
-			
+
 			if (guessesLeft != maxGuess) {
 				userGuess = userGuess + ",";
 			}
@@ -39,5 +39,29 @@
 			// Decrease the amount of guesses the user has
 			guessesLeft--;
 			document.getElementById("guessesLeft").textContent = guessesLeft;
+
+			// Ends game if user guesses right
+			if (userLetter === comLetter) {
+				winNum++;
+				document.getElementById("winNum").textContent = winNum;
+				resetGame();
+			}
 		}
+
+		else {
+			loseNum++;
+			document.getElementById("loseNum").textContent = loseNum;
+			resetGame();
+		}
+
+	}
+
+	function resetGame() {
+		userGuess = "";
+		document.getElementById("userGuess").textContent = userGuess;
+		guessesLeft = maxGuess;
+		document.getElementById("guessesLeft").textContent = guessesLeft;
+		rand = Math.floor((Math.random()*26));
+		comLetter = alphabet.charAt(rand);
+		console.log(comLetter);
 	}
