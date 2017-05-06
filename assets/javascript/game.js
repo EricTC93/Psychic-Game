@@ -4,15 +4,14 @@
 	var letter = alphabet.charAt(rand);
 	console.log(letter);
 
-	var test = "test"
+	var test = "test";
 
-	document.write("<h1> The Psychic Game </h1>") 
-	document.write("<p> Guess what letter I'm thinking of </p>");
+	var winNum = "0";
+	var loseNum = "0";
+	var userGuess = "";
+	var maxGuess = "10";
 
-	document.write("<p> Wins: </p>") 
-
-	document.write("<p> Losses: </p>") 
-
-	document.write("<p> Guesses left: </p>") 
-
-	document.write("<p> Guesses: " + test + "</p>") 
+	document.onkeyup = function(event) {
+		var userLetter = event.key;
+		console.log(userLetter);
+	}
