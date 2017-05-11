@@ -19,13 +19,13 @@
 	document.onkeyup = function(event) {
 		var userLetter = event.key;
 
-		// Checks for valid input
-		if(alphabet.indexOf(userLetter) == -1) {
-				return;
-		}
-
 		// Game does not continue if user has no guesses left
 		if (guessesLeft > 0) {
+
+			// Checks for valid input
+			if(alphabet.indexOf(userLetter) == -1) {
+				return;
+			}
 
 			console.log(userLetter);
 
@@ -50,9 +50,14 @@
 		}
 
 		else {
+			resetGame();
+		}
+
+		if (guessesLeft === 0) {
 			loseNum++;
 			document.getElementById("loseNum").textContent = loseNum;
-			resetGame();
+			document.getElementById("endStatus").textContent = "You Lose. Press any key to continue.";
+			guessesLeft = -1;
 		}
 
 	}
@@ -68,4 +73,6 @@
 		rand = Math.floor((Math.random()*26));
 		comLetter = alphabet.charAt(rand);
 		console.log(comLetter);
+
+		document.getElementById("endStatus").textContent = "";
 	}
