@@ -9,6 +9,7 @@
 	var guessesLeft = maxGuess;
 		document.getElementById("guessesLeft").textContent = guessesLeft;
 	// var gameOver = false;
+	var userLetter;
 
 	// Generates random letter to guess
 	var rand = Math.floor((Math.random()*26));
@@ -17,13 +18,13 @@
 
 	// Takes letter input from the user
 	document.onkeyup = function(event) {
-		var userLetter = event.key;
+		userLetter = event.key;
 
 		// Game does not continue if user has no guesses left
 		if (guessesLeft > 0) {
 
 			// Checks for valid input
-			if(alphabet.indexOf(userLetter) == -1) {
+			if(alphabet.indexOf(userLetter) == -1 || repeatGuess()) {
 				return;
 			}
 
@@ -75,4 +76,12 @@
 		console.log(comLetter);
 
 		document.getElementById("endStatus").textContent = "";
+	}
+
+	function repeatGuess () {
+		if (userGuess.indexOf(userLetter) != -1) {
+			return true;
+		}
+
+		return false;
 	}
