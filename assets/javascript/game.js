@@ -50,15 +50,10 @@
 			}
 		}
 
-		else {
-			resetGame();
-		}
-
 		if (guessesLeft === 0) {
 			loseNum++;
 			document.getElementById("loseNum").textContent = loseNum;
-			document.getElementById("endStatus").textContent = "You Lose. Press any key to continue.";
-			guessesLeft = -1;
+			resetGame();
 		}
 
 	}
@@ -75,7 +70,6 @@
 		comLetter = alphabet.charAt(rand);
 		console.log(comLetter);
 
-		document.getElementById("endStatus").textContent = "";
 	}
 
 	function repeatGuess () {
